@@ -1,195 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <Style>
-    /* 이서윤체 폰트 적용을 위한 코드 */
-    @font-face {
-      font-family: "LeeSeoyun";
-      src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff")
-        format("woff");
-      font-weight: normal;
-      font-style: normal;
-    }
-    
-    /* body태그 자체에 css 요소 부여 */
-    body {
-	  font-family: "LeeSeoyun";
-	  margin: 0;
-	  display: flex;
-	  justify-content: center;
-	  background-image: url("./background.png");
-    }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>나만의 중고마켓</title>
+    <link rel="stylesheet"
+        href="https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/easygpt/default.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <style>
+        .hero {
+            margin-bottom: 20px;
+        }
 
-    .container {
-        width: 390px;
-        background-color: cadetblue;
-        height: 100%;
-    }
-    
-    .photos {
-        margin-top: 30px;
-    }
-
-    .photo-frame {
-        background-color: white;
-        margin: 15px 20px;
-        height: 200px;
-        cursor: pointer;
-        position: relative;
-        background-size: cover
-    }
-    .footer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .f-title {
-        font-size: 25px;
-        font-weight: 900;
-        color: white;
-    }
-    
-    .f-date {
-        font-size: 15px;
-        font-weight: 500;
-        color: white;
-    }
-
-    #image1 {
-        background-image: url(KakaoTalk_20230329_155345383.jpg);
-    }
-
-    #image2 {
-        background-image: url(KakaoTalk_20230329_155345383_01.jpg);
-    }
-
-    #image3 {
-        background-image: url(KakaoTalk_20230329_155345383_02.jpg);
-    }
-
-    #image4 {
-        background-image: url(KakaoTalk_20230329_155345383_03.jpg);
-    }
-
-    .photo_description {
-        color: white;
-        background-color: black;
-
-        width: fit-content;
-        padding: 0 20px;
-        margin-bottom: 10px;
-
-        border-radius: 10px;
-        position: absolute;
-        bottom: 0;
-        opacity: 0%;
-
-        transform: translate(-50%);
-        left: 50%
-    }
-
-    .video {
-        width: 100%;
-        height: 100%;
-    }
-
-    .showText {
-	opacity: 1;
-    transition: opacity 0.5s linear;
-    }
-    
-    .hideText {
-	opacity: 0;
-    transition: opacity 0.5s linear;
-    }
+        .card:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s ease-in-out;
+        }
     </style>
-<script>
-    // 텍스트가 보여지는 기능
-// 1. 몇 번째 사진에 마우스가 올라갔는지 확인(if문)
-// 2. 해당 사진을 찾아 hideText class를 지워주고, showText는 삽입해줌
-function showText(number) {
-  if (number === 1) {
-    document.querySelector("#desc1").classList.remove("hideText");
-    document.querySelector("#desc1").classList.add("showText");
-  } else if (number === 2) {
-    document.querySelector("#desc2").classList.remove("hideText");
-    document.querySelector("#desc2").classList.add("showText");
-  } else {
-    document.querySelector("#desc3").classList.remove("hideText");
-    document.querySelector("#desc3").classList.add("showText");
-  }
-}
-
-// 텍스트가 감춰지는 기능
-// 1. 몇 번째 사진에서 마우스가 벗어났는지 확인(if문)
-// 2. 해당 사진을 찾아 shotText class를 지워주고, hideText는 삽입해줌
-function hideText(number) {
-  if (number === 1) {
-    document.querySelector("#desc1").classList.remove("showText");
-    document.querySelector("#desc1").classList.add("hideText");
-  } else if (number === 2) {
-    document.querySelector("#desc2").classList.remove("showText");
-    document.querySelector("#desc2").classList.add("hideText");
-  } else {
-    document.querySelector("#desc3").classList.remove("showText");
-    document.querySelector("#desc3").classList.add("hideText");
-  }
-}
-
-// 클릭 기능
-// 1. 선택된 사진의 숫자를 가진 텍스트를 alert 형태로 출력해줌
-function alertText(number) {
-	alert(`${number}번째 추억이에요! 눌러주셔서 감사합니다 :)`);
-}
-</script>
-
 </head>
+
 <body>
+    <div class="hero bg-dark text-center py-5">
+        <h1 class="text-white">나만의 르탄마켓</h1>
+        <h2 class="text-white">집에 있는 물건을 팝니다!</h2>
+    </div>
     <div class="container">
-        <div class="photos">
-            <div id="image1" class="photo-frame"
-            onmouseover="showText(1)"
-	        onmouseout="hideText(1)"
-	        onclick="alertText(1)"
-            > 
-                <span id="desc1" class="photo_description">
-                    매직한 머리
-                </span>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://source.unsplash.com/1600x900/?rice-cooker" class="card-img-top" alt="전기밥솥">
+                    <div class="card-body">
+                        <h5 class="card-title">전기밥솥</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">5만원</h6>
+                        <p class="card-text">한 번 밖에 안쓴 전기밥솥 팝니다. 부모님이 독립 할 때 주신 거에요!</p>
+                        <a href="https://www.spartacodingclub.kr/" class="card-link stretched-link" target="_blank"></a>
+                    </div>
+                </div>
             </div>
-            <div id="image2" class="photo-frame"
-            onmouseover="showText(2)"
-	        onmouseout="hideText(2)"
-	        onclick="alertText(2)"
-            >
-                <span id="desc2" class="photo_description">
-                    술먹고 신남
-                </span> 
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://source.unsplash.com/1600x900/?chair" class="card-img-top" alt="의자">
+                    <div class="card-body">
+                        <h5 class="card-title">의자</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">1만원</h6>
+                        <p class="card-text">사무실에서 사용한 의자 팝니다. 조절 가능한 팔걸이가 달려있어요.</p>
+                        <a href="https://www.spartacodingclub.kr/" class="card-link stretched-link" target="_blank"></a>
+                    </div>
+                </div>
             </div>
-            <div id="image3" class="photo-frame"
-            onmouseover="showText(3)"
-	        onmouseout="hideText(3)"
-	        onclick="alertText(3)"
-            >
-                <span id="desc3" class="photo_description">
-                    뽀삐짤림ㅠ
-                </span>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://source.unsplash.com/1600x900/?laptop" class="card-img-top" alt="노트북">
+                    <div class="card-body">
+                        <h5 class="card-title">노트북</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">30만원</h6>
+                        <p class="card-text">삼성 노트북 판매합니다. 사용기간은 1년 정도이며, 상태는 깨끗합니다.</p>
+                        <a href="https://www.spartacodingclub.kr/" class="card-link stretched-link" target="_blank"></a>
+                    </div>
+                </div>
             </div>
-            <div class="photo-frame">
-                <iframe 
-                    src="https://www.youtube.com/embed/ZeSS5yQ3A7Y" 
-                    frameborder="0"
-                    class="video"
-                ></iframe>
-        </div>
-        <div class="footer">
-            <p class="f-title">코딩1일차
-            </p>
-            <p class="f-date">2023.03.29</p>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="청소기.jpeg"  class="card-img-top" alt="청소기">
+                    <div class="card-body">
+                        <h5 class="card-title">청소기</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">25만원</h6>
+                        <p class="card-text">흡입력이 좋은 청소기!</p>
+                        <a href="https://www.spartacodingclub.kr/" class="card-link stretched-link" target="_blank"></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
 </body>
+
 </html>
